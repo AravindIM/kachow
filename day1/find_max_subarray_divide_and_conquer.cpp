@@ -22,20 +22,20 @@ int main() {
   errCode = 0;
 
   if (maxSubArray.low != 7) {
-    printf("expected low = %d, but found %d\n", 7, maxSubArray.low);
+    cout << "expected low = 7, but found " << maxSubArray.low << endl;
     errCode = 1;
   }
   if (maxSubArray.high != 10) {
-    printf("expected high = %d, but found %d\n", 10, maxSubArray.high);
+    cout << "expected high = 10, but found " << maxSubArray.high << endl;
     errCode = 1;
   }
   if (maxSubArray.sum != 43) {
-    printf("expected sum = %d, but found %d\n", 11, maxSubArray.sum);
+    cout << "expected sum = 11, but found " << maxSubArray.sum << endl;
     errCode = 1;
   }
 
   if (!errCode) {
-    printf("Passed test!\n");
+    cout << "Passed test!" << endl;
   }
   return errCode;
 }
