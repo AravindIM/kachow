@@ -41,6 +41,10 @@ int main() {
 }
 
 // Finds sub array with maximum sum
+// Takes O(nlogn)
+// Normal Brute force takes O(n^2)
+// n for the for loops ran for each time inside the max crossing sub array
+// function logn for number of execution of that function with division
 SubArray findMaxSubArray(int *array, int low, int high) {
   int mid;
   SubArray subArray, leftSubArray, rightSubArray, crossingSubArray;
@@ -74,6 +78,7 @@ SubArray findMaxSubArray(int *array, int low, int high) {
 }
 
 // Finds sub array crossing through middle having maximum sum
+// Takes O(n) time
 SubArray findMaxCrossingSubArray(int *array, int low, int mid, int high) {
   int leftSum, maxLeft, sum, rightSum, maxRight, maxSum;
   SubArray subArray;
