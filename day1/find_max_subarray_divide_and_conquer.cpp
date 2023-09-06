@@ -55,7 +55,7 @@ SubArray findMaxSubArray(int array[], int low, int high) {
     return subArray;
   }
 
-  mid = (low + high) / 2;
+  mid = low + (high - low) / 2;
 
   // Maximum sum can be in either of three cases:
   // 1. in left sub array
