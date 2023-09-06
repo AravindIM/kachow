@@ -9,7 +9,7 @@ int main() {
   int array[6] = {5, 2, 4, 6, 1, 3};
   int errCode = 0;
   int value;
-  mergeSort(array, 0, 6);
+  mergeSort(array, 0, 5);
 
   for (int i = 0; i < 6; i++) {
     value = i + 1;
@@ -30,7 +30,7 @@ int main() {
 void mergeSort(int array[], int low, int high) {
   int mid;
   if (low < high) {
-    mid = (low + high) / 2;
+    mid = low + (high - low) / 2;
     mergeSort(array, low, mid);
     mergeSort(array, mid + 1, high);
     merge(array, low, mid, high);
