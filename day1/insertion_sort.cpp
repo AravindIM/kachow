@@ -7,9 +7,11 @@ int main() {
   int array[6] = {5, 2, 4, 6, 1, 3};
   int errCode = 0;
   int value;
-  insertionSort(array, 6);
+  int size = sizeof(array) / sizeof(int);
 
-  for (int i = 0; i < 6; i++) {
+  insertionSort(array, size);
+
+  for (int i = 0; i < size; i++) {
     value = i + 1;
     if (array[i] != value) {
       cout << "expected array[" << i << "] = " << value << ", but got "

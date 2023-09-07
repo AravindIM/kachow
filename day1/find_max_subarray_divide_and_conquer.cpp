@@ -8,16 +8,18 @@ struct SubArray {
   int sum;
 };
 
+SubArray findMaxSubArray(int[], int);
+SubArray recurseMaxSubArray(int[], int, int);
 SubArray findMaxCrossingSubArray(int[], int, int, int);
-SubArray findMaxSubArray(int[], int, int);
 
 int main() {
   int array[16] = {13, -3, -25, 20, -3,  -16, -23, 18,
                    20, -7, 12,  -5, -22, 15,  -4,  7};
   SubArray maxSubArray;
   int errCode;
+  int size = sizeof(array) / sizeof(int);
 
-  maxSubArray = findMaxSubArray(array, 0, 15);
+  maxSubArray = findMaxSubArray(array, size);
 
   errCode = 0;
 
@@ -40,12 +42,17 @@ int main() {
   return errCode;
 }
 
+// function that calls the actual recursive function with right args
+SubArray findMaxSubArray(int array[], int size) {
+  return recurseMaxSubArray(array, 0, size - 1);
+}
+
 // Finds sub array with maximum sum
 // Takes O(nlogn)
 // Normal Brute force takes O(n^2)
 // n for the for loops ran for each time inside the max crossing sub array
 // function logn for number of execution of that function with division
-SubArray findMaxSubArray(int array[], int low, int high) {
+SubArray recurseMaxSubArray(int array[], int low, int high) {
   int mid;
   SubArray subArray, leftSubArray, rightSubArray, crossingSubArray;
 
@@ -61,8 +68,8 @@ SubArray findMaxSubArray(int array[], int low, int high) {
   // 1. in left sub array
   // 2. in right sub array
   // 3. in crossing sub array that crosses through middle
-  leftSubArray = findMaxSubArray(array, low, mid);
-  rightSubArray = findMaxSubArray(array, mid + 1, high);
+  leftSubArray = recurseMaxSubArray(array, low, mid);
+  rightSubArray = recurseMaxSubArray(array, mid + 1, high);
   crossingSubArray = findMaxCrossingSubArray(array, low, mid, high);
 
   // Check which is the maximum of the three cases

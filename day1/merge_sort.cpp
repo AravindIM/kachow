@@ -2,16 +2,19 @@
 #include <iostream>
 using namespace std;
 
-void mergeSort(int[], int, int);
+void mergeSort(int[], int);
+void mSort(int[], int, int);
 void merge(int[], int, int, int);
 
 int main() {
   int array[6] = {5, 2, 4, 6, 1, 3};
   int errCode = 0;
   int value;
-  mergeSort(array, 0, 5);
+  int size = sizeof(array) / sizeof(int);
 
-  for (int i = 0; i < 6; i++) {
+  mergeSort(array, size);
+
+  for (int i = 0; i < size; i++) {
     value = i + 1;
     if (array[i] != value) {
       cout << "expected array[" << i << "] = " << value << ", but got "
@@ -27,12 +30,17 @@ int main() {
   return errCode;
 }
 
-void mergeSort(int array[], int low, int high) {
+// function to call the actual recursive function with the right args
+void mergeSort(int array[], int size) { mSort(array, 0, size - 1); }
+
+// Uses divide and conquer to sort
+// Time Complexity = O(nlogn)
+void mSort(int array[], int low, int high) {
   int mid;
   if (low < high) {
     mid = low + (high - low) / 2;
-    mergeSort(array, low, mid);
-    mergeSort(array, mid + 1, high);
+    mSort(array, low, mid);
+    mSort(array, mid + 1, high);
     merge(array, low, mid, high);
   }
 }
