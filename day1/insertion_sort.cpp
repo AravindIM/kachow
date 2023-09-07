@@ -12,7 +12,7 @@ int main() {
   for (int i = 0; i < 6; i++) {
     value = i + 1;
     if (array[i] != value) {
-      cout << "expected array[" << value << "] = " << i << ", but got "
+      cout << "expected array[" << i << "] = " << value << ", but got "
            << array[i] << endl;
       errCode = 1;
     }
